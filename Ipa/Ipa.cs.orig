@@ -1,0 +1,142 @@
+﻿using System;
+
+using Xamarin.Forms;
+using Acr.Settings;
+using System.Collections.Generic;
+
+namespace ipa
+{
+	public enum Role{ Participant, Manager, ManagerCumParticipant,Partner, Client, IpaTeam , None} ;
+	public class App : Application
+	{
+		public static App AppMainPage; 
+
+		private static string _CurrentDate;
+		public static string CurrentDate{
+			get{ 
+				return _CurrentDate ?? (_CurrentDate = Settings.Local.Get<string>("CurrentDate"));
+			}
+			set{ 
+				_CurrentDate = value;
+			}
+		}
+//		private static List<RateQuestion> _RatingQuesion;
+//		public static List<RateQuestion> RatingQuesion{
+//			get{ 
+//				return _RatingQuesion ?? (_RatingQuesion= Settings.Local.Get<List<RateQuestion>>("RatingQuesion"));
+//			}
+//			set{ 
+//				_RatingQuesion = value;
+//			}
+//		}
+
+		private static int[] _UserRole;
+		public static int[] UserRole{
+			set{
+				_UserRole = value;
+			}
+			private get{ 
+				return _UserRole;
+			}
+		}
+
+		private static string _UserName;
+		public static string UserName{
+			get{ 
+				return _UserName ?? (_UserName = Settings.Local.Get<string>("UserName"));
+			}
+			set{ 
+				_UserName = value;
+			}
+		}
+		private static string _UniqueAppId;
+		public static string UniqueAppId{
+			get{
+				return _UniqueAppId ?? (_UniqueAppId = Settings.Local.Get<string> ("UniqueAppId"));
+			}
+			set{ 
+				_UniqueAppId = value;
+			}
+		}		
+
+		private static string _IsFirstLaunch;
+		public static string IsFirstLaunch{
+			get{
+				return _IsFirstLaunch ?? (_IsFirstLaunch = Settings.Local.Get<string> ("IsFirstLaunch", null));
+			}
+			set{ 
+				_IsFirstLaunch = value;
+			}
+		}
+
+		public App ()
+		{
+			NavigationPage mainPage = NavigationHandler.GlobalNavigator;
+			mainPage.Navigation.PushAsync(new TempPage());
+
+			if (string.IsNullOrEmpty (IsFirstLaunch)) {// if user opening for frist time
+				mainPage.Navigation.PushModalAsync( new WalkThroughScreen (new WalkThroughViewModel()));
+
+			} else if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(UniqueAppId)) {
+				NavigationHandler.LoginNavigator.Navigation.PushAsync( new LoginPage ());
+				mainPage.Navigation.PushModalAsync(NavigationHandler.LoginNavigator);
+			} else {// if user is already logged in
+				MotherViewModel viewModel = new MotherViewModel();
+			}
+
+			MainPage = mainPage;
+<<<<<<< HEAD
+//			MainPage = new PartnerCourseDetailPage();
+=======
+>>>>>>> 8dc21f174b20cb47647356ede07e620f0071901e
+		}
+
+		protected override void OnStart ()
+		{
+			// Handle when your app starts
+		}
+
+		protected override void OnSleep ()
+		{
+			if(!string.IsNullOrEmpty (App.UserName))
+			Settings.Local.Set<string> ("UserName", App.UserName);
+			Settings.Local.Set<string> ("UniqueAppId", UniqueAppId);
+			Settings.Local.Set<string> ("IsFirstLaunch", IsFirstLaunch);
+			Settings.Local.Set<string> ("CurrentDate", CurrentDate);
+//			Settings.Local.Set<List<RateQuestion>> ("CurrentDate", RatingQuesion);
+
+			// Handle when your app sleeps
+		}
+
+		protected override void OnResume ()
+		{
+			// Handle when your app resumes
+		}
+
+		public static Role GetUserRole(){
+			if (UserRole == null)
+				return Role.None;
+
+			if (UserRole.Length == 1) {
+				if (UserRole [0] == 1) {
+					return Role.Participant;
+				} else if (UserRole [0] == 2) {
+					return Role.Manager;
+				} else if (UserRole [0] == 3) {
+					return Role.Partner;
+				} else if (UserRole [0] == 4) {
+					return Role.Client;
+				} else if (UserRole [0] == 5) {
+					return Role.IpaTeam;
+				}
+			} else if(UserRole.Length == 2) {
+				if (UserRole [0] == 1 && UserRole [1] == 2) {
+					return Role.ManagerCumParticipant;
+				}
+			}
+			return Role.None;
+		}
+	}
+
+}
+

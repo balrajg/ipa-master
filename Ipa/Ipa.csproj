@@ -1,0 +1,763 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{B15C4ADF-882C-4597-B065-633F6E948B4E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Ipa</RootNamespace>
+    <AssemblyName>Ipa</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Ipa.cs" />
+    <Compile Include="Modules\Common Views\ListSeperator.xaml.cs">
+      <DependentUpon>ListSeperator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Forum\Model\GetOthersMessageRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Modules\Login\View\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Behaviours\AreaCodeBehaviour.cs" />
+    <Compile Include="Common\Behaviours\CountryCodeBehaviour.cs" />
+    <Compile Include="Common\Behaviours\MaxLengthEditorBehaviour.cs" />
+    <Compile Include="Common\Behaviours\MaxLimitBehavior.cs" />
+    <Compile Include="Common\CommonValidations\Validator.cs" />
+    <Compile Include="Common\Converters\NotConverter.cs" />
+    <Compile Include="Modules\APIController\APIServiceProvider.cs" />
+    <Compile Include="Modules\APIController\APIErrorHandler.cs" />
+    <Compile Include="Modules\APIController\ResponseBase.cs" />
+    <Compile Include="Modules\APIController\Handlers\AttendanceHandler.cs" />
+    <Compile Include="Modules\APIController\Handlers\CourseHandler.cs" />
+    <Compile Include="Modules\APIController\Handlers\DeviceInfoHandler.cs" />
+    <Compile Include="Modules\APIController\Handlers\ReportHandler.cs" />
+    <Compile Include="Modules\APIController\Handlers\UserHandler.cs" />
+    <Compile Include="Modules\Login\Model\LoginRequest.cs" />
+    <Compile Include="Modules\Login\Model\LoginResponse.cs" />
+    <Compile Include="Modules\Reports\Model\UserReportRequest.cs" />
+    <Compile Include="Modules\settings\SettingViewModel.cs" />
+    <Compile Include="Modules\Login\LoginViewModel.cs" />
+    <Compile Include="Modules\Login\ForgetPassword\ForgetPasswordViewModel.cs" />
+    <Compile Include="Modules\Login\ForgetPassword\Model\ForgetPassword.cs" />
+    <Compile Include="Modules\Assessment\Model\GetAssessmentRequest.cs" />
+    <Compile Include="Modules\HomePage\Model\Activity.cs" />
+    <Compile Include="Modules\HomePage\Model\Course.cs" />
+    <Compile Include="Modules\HomePage\Model\GetReporteeList.cs" />
+    <Compile Include="Modules\HomePage\Model\ActivityCompletionReport.cs" />
+    <Compile Include="Modules\HomePage\Participant\ParticipantHomeViewModel.cs" />
+    <Compile Include="Modules\HomePage\CourseViewModel.cs" />
+    <Compile Include="Modules\HomePage\ActivityViewModel.cs" />
+    <Compile Include="Modules\Login\ForgetPassword\View\ForgetPasswordPage.xaml.cs">
+      <DependentUpon>ForgetPasswordPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Profile\ProfileViewModel.cs" />
+    <Compile Include="Modules\Profile\Model\Profile.cs" />
+    <Compile Include="Modules\Profile\Model\UpdateProfile.cs" />
+    <Compile Include="Modules\Profile\Model\ViewProfile.cs" />
+    <Compile Include="Modules\TabbedPageController\View\MotherPage.xaml.cs">
+      <DependentUpon>MotherPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Profile\View\SetupProfilePage.xaml.cs">
+      <DependentUpon>SetupProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Profile\View\SetupOrgPage.xaml.cs">
+      <DependentUpon>SetupOrgPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Profile\View\ChangePwdPage.xaml.cs">
+      <DependentUpon>ChangePwdPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Profile\View\EditProfilePage.xaml.cs">
+      <DependentUpon>EditProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Profile\View\SetupUpdatePwdPage.xaml.cs">
+      <DependentUpon>SetupUpdatePwdPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Participant\Model\ParticipantReportSummary.cs" />
+    <Compile Include="Modules\Reports\Participant\Model\Score.cs" />
+    <Compile Include="Modules\NavigationController\NavigationHandler.cs" />
+    <Compile Include="Modules\Assessment\View\AssessmentAttemptPage.xaml.cs">
+      <DependentUpon>AssessmentAttemptPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Participant\View\ParticipantCourseDetailPage.xaml.cs">
+      <DependentUpon>ParticipantCourseDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ProfileItemListView.xaml.cs">
+      <DependentUpon>ProfileItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\OrgItemListView.xaml.cs">
+      <DependentUpon>OrgItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Client\View\ClientHomePage.xaml.cs">
+      <DependentUpon>ClientHomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Manager\view\ManagerHomePage.xaml.cs">
+      <DependentUpon>ManagerHomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Partner\View\PartnerHomePage.xaml.cs">
+      <DependentUpon>PartnerHomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Partner\PartnerHomeViewModel.cs" />
+    <Compile Include="Modules\HomePage\Manager\ManagerHomeViewModel.cs" />
+    <Compile Include="Modules\HomePage\Client\ClientCourseDetailViewModel.cs" />
+    <Compile Include="Modules\HomePage\Client\ClientHomeViewModel.cs" />
+    <Compile Include="Modules\TabbedPageController\MotherViewModel.cs" />
+    <Compile Include="Modules\HomePage\Participant\View\ParticipantHomePage.xaml.cs">
+      <DependentUpon>ParticipantHomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Participant\View\ParticipantReportPage.xaml.cs">
+      <DependentUpon>ParticipantReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\settings\View\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\settings\StaticPages\BrowserPage.xaml.cs">
+      <DependentUpon>BrowserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\settings\StaticPages\WebAgent.cs" />
+    <Compile Include="Modules\settings\StaticPages\BrowserViewModel.cs" />
+    <Compile Include="Modules\Common Views\ActivityItemView.xaml.cs">
+      <DependentUpon>ActivityItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\AssessmentFillUpsView.xaml.cs">
+      <DependentUpon>AssessmentFillUpsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\AssessmentMultipleChoiceView.xaml.cs">
+      <DependentUpon>AssessmentMultipleChoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ClientCourseDetailAttendanceItemView.xaml.cs">
+      <DependentUpon>ClientCourseDetailAttendanceItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ManagerCourseDetailAttendanceItemView.xaml.cs">
+      <DependentUpon>ManagerCourseDetailAttendanceItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\MarkAttendanceItemView.xaml.cs">
+      <DependentUpon>MarkAttendanceItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\AssessmentActivityItemView.xaml.cs">
+      <DependentUpon>AssessmentActivityItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\CourseDetailActivityItemView.xaml.cs">
+      <DependentUpon>CourseDetailActivityItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\AttendanceItemView.xaml.cs">
+      <DependentUpon>AttendanceItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\OverAllReportItemView.xaml.cs">
+      <DependentUpon>OverAllReportItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\PartnerAttendanceItemView.xaml.cs">
+      <DependentUpon>PartnerAttendanceItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ClientCourseItemView.xaml.cs">
+      <DependentUpon>ClientCourseItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ManagerCourseItemView.xaml.cs">
+      <DependentUpon>ManagerCourseItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ClientCourseDetailItemView.xaml.cs">
+      <DependentUpon>ClientCourseDetailItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ParticipantCourseItemView.xaml.cs">
+      <DependentUpon>ParticipantCourseItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ManagerCourseDetailItemView.xaml.cs">
+      <DependentUpon>ManagerCourseDetailItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Client\View\ClientReportPage.xaml.cs">
+      <DependentUpon>ClientReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Manager\View\ManagerReportPage.xaml.cs">
+      <DependentUpon>ManagerReportPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Manager\view\ManagerAttendanceLookupPage.xaml.cs">
+      <DependentUpon>ManagerAttendanceLookupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Manager\view\ManagerCourseDetailActivityPage.xaml.cs">
+      <DependentUpon>ManagerCourseDetailActivityPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Manager\view\ManagerCourseDetailPage.xaml.cs">
+      <DependentUpon>ManagerCourseDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Client\View\ClientCourseDetailPage.xaml.cs">
+      <DependentUpon>ClientCourseDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Client\View\ClientCourseDetailAttendanceLookupPage.xaml.cs">
+      <DependentUpon>ClientCourseDetailAttendanceLookupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Partner\View\PartnerAttendanceLookupPage.xaml.cs">
+      <DependentUpon>PartnerAttendanceLookupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Partner\View\AddUserPage.xaml.cs">
+      <DependentUpon>AddUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Partner\View\PartnerCourseDetailPage.xaml.cs">
+      <DependentUpon>PartnerCourseDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Manager\Reports Filter\ManagerFilterPage.xaml.cs">
+      <DependentUpon>ManagerFilterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Manager\Reports Filter\FilterReporteePage.xaml.cs">
+      <DependentUpon>FilterReporteePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Assessment\View\AssessmentAttemptSummaryPage.xaml.cs">
+      <DependentUpon>AssessmentAttemptSummaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Model\GetBatchReportManagerRequest.cs" />
+    <Compile Include="Modules\Reports\Manager\Model\ManagerReportSummary.cs" />
+    <Compile Include="Modules\Walkthrough\WalkThroughViewModel.cs" />
+    <Compile Include="Modules\Walkthrough\IWalkThroughData.cs" />
+    <Compile Include="Modules\Walkthrough\View\WalkThroughScreen.xaml.cs">
+      <DependentUpon>WalkThroughScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Walkthrough\View\WalkthroughView.xaml.cs">
+      <DependentUpon>WalkthroughView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Attendance\Mark Attendance\Model\MarkAttendance.cs" />
+    <Compile Include="Modules\Attendance\Mark Attendance\Model\MarkAttendanceRequest.cs" />
+    <Compile Include="Modules\Attendance\Rate Participant\Model\ParticipantRating.cs" />
+    <Compile Include="Modules\Attendance\Mark Attendance\MarkAttendanceViewModel.cs" />
+    <Compile Include="Modules\Attendance\Mark Attendance\View\MarkAttendancePage.xaml.cs">
+      <DependentUpon>MarkAttendancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Attendance\Rate Participant\View\RateParticipantPage.xaml.cs">
+      <DependentUpon>RateParticipantPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Attendance\Model\AttadanceDetail.cs" />
+    <Compile Include="Modules\Common Views\ParticipantItemView.xaml.cs">
+      <DependentUpon>ParticipantItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Manager\ManagerCourseDetailViewModel.cs" />
+    <Compile Include="Modules\Attendance\Model\GetAtendanceListRequest.cs" />
+    <Compile Include="Modules\Attendance\Rate Participant\Model\RateParticipantRequest.cs" />
+    <Compile Include="Modules\Attendance\Rate Participant\Model\GetParticipantRatingRequest.cs" />
+    <Compile Include="Modules\Reports\Participant\ParticipantReportViewModel.cs" />
+    <Compile Include="Modules\Reports\Manager\ManagerReportViewModel.cs" />
+    <Compile Include="Modules\Reports\Manager\View\ReportBatchwiseCompletionStatusPage.xaml.cs">
+      <DependentUpon>ReportBatchwiseCompletionStatusPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ParticipantHomeItemView.xaml.cs">
+      <DependentUpon>ParticipantHomeItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\ManagerHomeItemView.xaml.cs">
+      <DependentUpon>ManagerHomeItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Manager\ManagerCourseDetailActivityViewModel.cs" />
+    <Compile Include="Common\Behaviours\ButtonClickedTriggerAction.cs" />
+    <Compile Include="Modules\HomePage\Model\ReporteeListForAllCourse.cs" />
+    <Compile Include="Modules\Attendance\Model\Reportee.cs" />
+    <Compile Include="Modules\Login\ReporteeViewModel.cs" />
+    <Compile Include="Modules\Reports\Client\ClientReportViewModel.cs" />
+    <Compile Include="Modules\HomePage\Partner\AddUserViewModel.cs" />
+    <Compile Include="Modules\Assessment\AssessmentSubmitViewModel.cs" />
+    <Compile Include="Modules\HomePage\Manager\ManagerAttendanceLookupViewModel.cs" />
+    <Compile Include="Modules\HomePage\Client\ClientAttendanceLookupViewModel.cs" />
+    <Compile Include="Modules\HomePage\Manager\ActivityCompletionViewModel.cs" />
+    <Compile Include="Modules\HomePage\AttendanceListItemViewModel.cs" />
+    <Compile Include="Modules\HomePage\Partner\PartnerCourseDetailViewModel.cs" />
+    <Compile Include="Modules\Common Views\PartnerCourseDetailItemView.xaml.cs">
+      <DependentUpon>PartnerCourseDetailItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Partner\PartnerAttendanceLookupViewModel.cs" />
+    <Compile Include="Modules\HomePage\Model\AddParticipantRequest.cs" />
+    <Compile Include="Modules\Attendance\Rate Participant\RateParticipantViewModel.cs" />
+    <Compile Include="Modules\Common Views\ParticipantFilterListItemView.xaml.cs">
+      <DependentUpon>ParticipantFilterListItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Model\ParticipantListRequest.cs" />
+    <Compile Include="Modules\Common Views\PartnerCourseDetailAttendanceItemView.xaml.cs">
+      <DependentUpon>PartnerCourseDetailAttendanceItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\AddUserItemView.xaml.cs">
+      <DependentUpon>AddUserItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\HomePage\Participant\ParticipantCourseDetailViewModel.cs" />
+    <Compile Include="Modules\Assessment\AssessmentAttemptViewModel.cs" />
+    <Compile Include="Common\Behaviours\MultiTriggerConverter.cs" />
+    <Compile Include="Modules\Walkthrough\WalkThroughData.cs" />
+    <Compile Include="Modules\Forum\Views\ForumPage.xaml.cs">
+      <DependentUpon>ForumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\CourseActivityViewItem.xaml.cs">
+      <DependentUpon>CourseActivityViewItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Forum\Model\GetChatRoomRequest.cs" />
+    <Compile Include="Modules\Forum\Model\GetChatMessageRequest.cs" />
+    <Compile Include="Modules\Forum\Model\EnterChatRoomRequest.cs" />
+    <Compile Include="Modules\Forum\Model\SendMessageRequest.cs" />
+    <Compile Include="Modules\Forum\Model\ExitChatRequest.cs" />
+    <Compile Include="Modules\Reports\Manager\BatchReportListItemViewModel.cs" />
+    <Compile Include="Modules\Assessment\IAssessmentItemData.cs" />
+    <Compile Include="Common\Behaviours\EmailValidatorBehavior.cs" />
+    <Compile Include="Common\Behaviours\NumberValidatorBehavior.cs" />
+    <Compile Include="Modules\Assessment\View\QuestionView.cs" />
+    <Compile Include="Modules\Common Views\ButtonItemView.xaml.cs">
+      <DependentUpon>ButtonItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\TabbedPageController\IHome.cs" />
+    <Compile Include="Modules\TabbedPageController\IReport.cs" />
+    <Compile Include="Modules\TabbedPageController\IForum.cs" />
+    <Compile Include="Modules\TabbedPageController\ISetting.cs" />
+    <Compile Include="Modules\Reports\Client\Model\GetProgramListRequest.cs" />
+    <Compile Include="Modules\Reports\Client\Model\GetProgramReport.cs" />
+    <Compile Include="Modules\APIController\Handlers\ChatHandler.cs" />
+    <Compile Include="Modules\Assessment\Model\SubmitAssessmentRequest.cs" />
+    <Compile Include="Modules\Attendance\Rate Participant\Model\GetPraticipantRatingQuestionList.cs" />
+    <Compile Include="Modules\Common Views\RateParticipantItemView.xaml.cs">
+      <DependentUpon>RateParticipantItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Behaviours\MaxLengthValidator.cs" />
+    <Compile Include="Modules\Reports\Client\ProgramReportListViewModel.cs" />
+    <Compile Include="Modules\HomePage\Partner\Filter\FilterPage.xaml.cs">
+      <DependentUpon>FilterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Client\ProgramListViewModel.cs" />
+    <Compile Include="Modules\Forum\Views\ForumChatListItemView.xaml.cs">
+      <DependentUpon>ForumChatListItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Manager\ReportBatchwiseViewModel.cs" />
+    <Compile Include="Modules\Reports\Participant\View\ParticipantReportItemView.xaml.cs">
+      <DependentUpon>ParticipantReportItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Client\View\ClientReportItemListView.xaml.cs">
+      <DependentUpon>ClientReportItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Client\View\ClientReportItemView.xaml.cs">
+      <DependentUpon>ClientReportItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Reports\Manager\View\ManagerReportItemView.xaml.cs">
+      <DependentUpon>ManagerReportItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Assessment\AssessmentViewModel.cs" />
+    <Compile Include="Modules\Attendance\Rate Participant\QuestionListViewModel.cs" />
+    <Compile Include="Modules\Reports\Manager\courseListViewModel.cs" />
+    <Compile Include="ChatHelper\ChatManager.cs" />
+    <Compile Include="ChatHelper\Model\Message.cs" />
+    <Compile Include="ChatHelper\ViewModel\IMessageViewModel.cs" />
+    <Compile Include="ChatHelper\Views\AudioMessageView.cs" />
+    <Compile Include="ChatHelper\Views\BubbleLabel.cs" />
+    <Compile Include="ChatHelper\Views\ChatListView.cs" />
+    <Compile Include="ChatHelper\Views\ImageMessageView.cs" />
+    <Compile Include="ChatHelper\Views\MessageViewCell.cs" />
+    <Compile Include="ChatHelper\Views\TextMessageView.cs" />
+    <Compile Include="ChatHelper\Views\VideoMessageView.cs" />
+    <Compile Include="Modules\Forum\ChatRoom\ChatRoomViewModel.cs" />
+    <Compile Include="Modules\Forum\ChatRoom\View\ChatRoomView.xaml.cs">
+      <DependentUpon>ChatRoomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Forum\ForumListPageViewModel.cs" />
+    <Compile Include="Modules\Forum\ForumListItemViewModel.cs" />
+    <Compile Include="Modules\Forum\ChatRoom\MessageViewModel.cs" />
+    <Compile Include="Modules\Forum\ChatRoom\Message.cs" />
+    <Compile Include="Modules\Attendance\Mark Attendance\AttendanceViewModel.cs" />
+    <Compile Include="Modules\Assessment\View\AssessmentPage.xaml.cs">
+      <DependentUpon>AssessmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Assessment\View\QuestionPage.xaml.cs">
+      <DependentUpon>QuestionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Common Views\TempPage.cs" />
+    <Compile Include="ChatHelper\Views\BubbleView.cs" />
+    <Compile Include="Custom Views\MyEntry.cs" />
+    <Compile Include="Custom Views\RoundedBoxView.cs" />
+    <Compile Include="Custom Views\MyTabbedPage.cs" />
+    <Compile Include="Custom Views\MyEditor.cs" />
+    <Compile Include="Custom Views\GalleryCarouselView.cs" />
+    <Compile Include="Custom Views\PagerIndicatorDots.cs" />
+    <Compile Include="Custom Views\SegmentedControl.cs" />
+    <Compile Include="Custom Views\CheckBoxView.xaml.cs">
+      <DependentUpon>CheckBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Views\CarouselView.cs" />
+    <Compile Include="Custom Views\MyButton.cs" />
+    <Compile Include="Modules\Reports\Manager\View\ParticipantReportView.xaml.cs">
+      <DependentUpon>ParticipantReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dependancy Services\IAndroidMethods.cs" />
+    <Compile Include="Modules\settings\StaticPages\TermsAndConditionPage.xaml.cs">
+      <DependentUpon>TermsAndConditionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\settings\StaticPages\HowthisAppWorksPage.xaml.cs">
+      <DependentUpon>HowthisAppWorksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Notification\CrossPushNotificationListener.cs" />
+    <Compile Include="Modules\Notification\INotification.cs" />
+    <Compile Include="Modules\Notification\NotificationPayload.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.Forms.2.0.1.6505\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.0.1.6505\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\Xamarin.Insights.1.11.4\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.11.4\build\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\packages\Xamarin.Insights.1.11.4\lib\portable-win+net45+wp80+windows8+wpa+MonoAndroid10+MonoTouch10\Xamarin.Insights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media">
+      <HintPath>..\packages\Xam.Plugin.Media.2.3.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Media.2.3.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
+      <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.4.1\lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PushNotification.Plugin.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.PushNotification.1.2.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\PushNotification.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PushNotification.Plugin">
+      <HintPath>..\packages\Xam.Plugin.PushNotification.1.2.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\PushNotification.Plugin.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Portable.Core">
+      <HintPath>..\packages\FubarCoder.RestSharp.Portable.Core.3.3.0\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\RestSharp.Portable.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Portable.HttpClient">
+      <HintPath>..\packages\FubarCoder.RestSharp.Portable.HttpClient.3.3.0\lib\portable-net45+dnxcore50+win+wpa81+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\RestSharp.Portable.HttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Settings">
+      <HintPath>..\packages\Acr.Settings.5.1.1\lib\portable-net45+netcore45+win8+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Acr.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Settings.Interface">
+      <HintPath>..\packages\Acr.Settings.5.1.1\lib\portable-net45+netcore45+win8+wpa81+wp8+MonoAndroid10+Xamarin.iOS10\Acr.Settings.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.2.2.12\lib\portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+Xamarin.Mac20+UAP10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.2.2.12\lib\portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+Xamarin.Mac20+UAP10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.1.6\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.1.6\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.1.6\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.1.6\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\portable-net45+wp8+wpa81+netcore45+monoandroid1+xamarin.ios10\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Permissions">
+      <HintPath>..\packages\Plugin.Permissions.1.1.7\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Permissions.Abstractions">
+      <HintPath>..\packages\Plugin.Permissions.1.1.7\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Permissions.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.CarouselView">
+      <HintPath>..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.DeviceInfo">
+      <HintPath>..\packages\Xam.Plugin.DeviceInfo.2.0.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.DeviceInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.DeviceInfo.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.DeviceInfo.2.0.2\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.DeviceInfo.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Helpers\CrossPushNotificationListener.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\Login\View\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Login\ForgetPassword\View\ForgetPasswordPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\TabbedPageController\View\MotherPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Profile\View\SetupProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Profile\View\SetupOrgPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Profile\View\ChangePwdPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Profile\View\EditProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Profile\View\SetupUpdatePwdPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Assessment\View\AssessmentAttemptPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Participant\View\ParticipantCourseDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ProfileItemListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\OrgItemListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Client\View\ClientHomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Manager\view\ManagerHomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Partner\View\PartnerHomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Participant\View\ParticipantHomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Participant\View\ParticipantReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\settings\View\SettingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\settings\StaticPages\BrowserPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ActivityItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\AssessmentFillUpsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\AssessmentMultipleChoiceView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ClientCourseDetailAttendanceItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ManagerCourseDetailAttendanceItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\MarkAttendanceItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\AssessmentActivityItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\CourseDetailActivityItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\AttendanceItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\OverAllReportItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\PartnerAttendanceItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ClientCourseItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ManagerCourseItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ClientCourseDetailItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ParticipantCourseItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ManagerCourseDetailItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Client\View\ClientReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Manager\View\ManagerReportPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Manager\view\ManagerAttendanceLookupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Manager\view\ManagerCourseDetailActivityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Manager\view\ManagerCourseDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Client\View\ClientCourseDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Client\View\ClientCourseDetailAttendanceLookupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Partner\View\PartnerAttendanceLookupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Partner\View\AddUserPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Partner\View\PartnerCourseDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Manager\Reports Filter\ManagerFilterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Manager\Reports Filter\FilterReporteePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Assessment\View\AssessmentAttemptSummaryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Walkthrough\View\WalkThroughScreen.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Walkthrough\View\WalkthroughView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Attendance\Mark Attendance\View\MarkAttendancePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Attendance\Rate Participant\View\RateParticipantPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ParticipantItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Manager\View\ReportBatchwiseCompletionStatusPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ParticipantHomeItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ManagerHomeItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\PartnerCourseDetailItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ParticipantFilterListItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\PartnerCourseDetailAttendanceItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\AddUserItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Forum\Views\ForumPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\CourseActivityViewItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\ButtonItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Common Views\RateParticipantItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\HomePage\Partner\Filter\FilterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Forum\Views\ForumChatListItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Participant\View\ParticipantReportItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Client\View\ClientReportItemListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Client\View\ClientReportItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Manager\View\ManagerReportItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Forum\ChatRoom\View\ChatRoomView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Assessment\View\AssessmentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Assessment\View\QuestionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom Views\CheckBoxView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Reports\Manager\View\ParticipantReportView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\settings\StaticPages\TermsAndConditionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\settings\StaticPages\HowthisAppWorksPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\Common Views\LoadingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\Common Views\ListSeperator.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
